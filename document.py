@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import operator
 from pprint import pprint
 
 from tokenizer import Tokenizer
@@ -31,6 +32,22 @@ class Document:
     def extract_terms(self, tokenizer):
         self.terms = tokenizer.tokenize(self.text)
 
+    def get_frequent_terms(self, size=5):
+        """
+            This method returns the map with most frequent terms in the document 
+            sorted in descending order by frequency.
+        """
+        # gives a list of tuple with (key,value)
+        sorted_map = sorted(self.frequency_map.items(), key = operator.itemgetter(1), reverse=True)
+        to_ret = {}
+        if size > len(sorted_map):
+            size = len(sorted_map)
+        for i in range(size):
+            pair = sorted_map[i]
+            to_ret[pair[0]] = pair[1]
+        return to_ret
+
+
     def display(self):
         self.__str__()
 
@@ -45,7 +62,7 @@ def main():
     doc.load_from_file("documents/test.txt")
     doc.extract_terms(tokenizer)
     doc.generate_frequency_map()
-    doc.display()
+    print(doc.get_frequent_terms())
 
 if __name__ == "__main__":
     main()
