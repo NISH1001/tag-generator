@@ -19,18 +19,15 @@ class Tagger:
             self.documents[id].display()
 
     def tag_document(self, document):
-        frequency_map = document.frequency_map
         documents = [ self.documents[key] for key in self.documents ]
-        tfidf_list = []
-        for key in frequency_map:
-            tf = self.tfidf.calculate_term_frequency(document, key)
-            idf = self.tfidf.calculate_inverse_document_frequency(documents, key)
-            d = {}
-            d["term"] = key
-            d["tf"] = tf
-            d["idf"] = idf
-            tfidf_list.append(d)
-        return tfidf_list
+        tfidf_list = self.tfidf.calculate_tfidf_document(documents, document)
+        weighted_terms = {}
+        for d in tfidf_list:
+            term = d["term"]
+            tf = d["tf"]
+            idf = d["idf"]
+            weighted_terms[term] = tf * idf
+        return weighted_terms
 
     def __str__(self):
         return str(pprint(vars(self)))
@@ -53,8 +50,8 @@ def main():
     tagger.add_document(doc1)
     tagger.add_document(doc2)
     #tagger.display()
-    tfidfs = tagger.tag_document(doc1)
-    print(tfidfs)
+    weighted_terms = tagger.tag_document(doc1)
+    print(weighted_terms)
 
 if __name__ == "__main__":
     main()

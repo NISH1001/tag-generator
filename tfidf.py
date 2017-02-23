@@ -41,6 +41,19 @@ class TFIDF:
             idf = math.log( total_documents / total_document_with_term)
         return  idf
 
+    def calculate_tfidf_document(self, documents, document):
+        frequency_map = document.frequency_map
+        tfidf_list = []
+        for key in frequency_map:
+            tf = self.calculate_term_frequency(document, key)
+            idf = self.calculate_inverse_document_frequency(documents, key)
+            d = {}
+            d["term"] = key
+            d["tf"] = tf
+            d["idf"] = idf
+            tfidf_list.append(d)
+        return tfidf_list
+
 def main():
     tokenizer = Tokenizer()
 
