@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import operator
 from pprint import pprint
 
 from document import Document
@@ -18,7 +19,7 @@ class Tagger:
         for id in self.documents:
             self.documents[id].display()
 
-    def tag_document(self, document):
+    def get_terms_weighted_by_tfidf(self, document):
         documents = [ self.documents[key] for key in self.documents ]
         tfidf_list = self.tfidf.calculate_tfidf_document(documents, document)
         weighted_terms = {}
@@ -28,6 +29,16 @@ class Tagger:
             idf = d["idf"]
             weighted_terms[term] = tf * idf
         return weighted_terms
+
+    def get_tags_using_weighted_terms(self, weighted_terms, size=5):
+        sorted_terms = sorted(weighted_terms.items(), key = operator.itemgetter(1), reverse=True)
+        length = len(weighted_terms)
+        size = length if size > length else size
+        tags = []
+        for i in range(size):
+            tags.append(sorted_terms[i][0])
+        return tags
+
 
     def __str__(self):
         return str(pprint(vars(self)))
@@ -50,8 +61,9 @@ def main():
     tagger.add_document(doc1)
     tagger.add_document(doc2)
     #tagger.display()
-    weighted_terms = tagger.tag_document(doc1)
-    print(weighted_terms)
+    weighted_terms = tagger.get_terms_weighted_by_tfidf(doc1)
+    tags = tagger.get_tags_using_weighted_terms(weighted_terms)
+    print(tags)
 
 if __name__ == "__main__":
     main()
