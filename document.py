@@ -11,6 +11,7 @@ class Document:
         self.terms = []
         self.frequency_map = {}
         self.text = ""
+        self.smoothing = False
 
     def add_text(self, text):
         self.text += " " + text
@@ -20,6 +21,18 @@ class Document:
         with open(filename, 'r') as f:
             for line in f:
                 self.add_text(line)
+
+    def get_total_term_count(self):
+        return len(self.terms)
+    
+    def get_term_count(self, term, smoothing=False):
+        count = 0
+        try:
+            count = self.frequency_map[term]
+        except KeyError:
+            count = 0
+        return count
+
 
     def generate_frequency_map(self):
         for term in self.terms:
