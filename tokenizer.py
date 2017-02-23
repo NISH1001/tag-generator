@@ -5,7 +5,7 @@ import re
 class Tokenizer:
     def __init__(self):
         # list of delimiter
-        self.splitter = [',', '.', '/', '?', ' ']
+        self.splitter = [',', '.', '/', '?', ' ', '"', '*', ':']
     
     def tokenize(self, text):
         """

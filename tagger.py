@@ -43,8 +43,7 @@ class Tagger:
     def __str__(self):
         return str(pprint(vars(self)))
 
-
-def main():
+def test():
     tokenizer = Tokenizer()
 
     doc1 = Document(1)
@@ -64,6 +63,43 @@ def main():
     weighted_terms = tagger.get_terms_weighted_by_tfidf(doc1)
     tags = tagger.get_tags_using_weighted_terms(weighted_terms)
     print(tags)
+
+def test_article():
+    tokenizer = Tokenizer()
+
+    doc1 = Document(1)
+    doc1.load_from_file("documents/in_the_core")
+    doc1.extract_terms(tokenizer)
+    doc1.generate_frequency_map()
+
+    doc2 = Document(2)
+    doc2.load_from_file("documents/i_saw_a_dream")
+    doc2.extract_terms(tokenizer)
+    doc2.generate_frequency_map()
+
+    doc3 = Document(3)
+    doc3.load_from_file("documents/smile")
+    doc3.extract_terms(tokenizer)
+    doc3.generate_frequency_map()
+
+    doc4 = Document(4)
+    doc4.load_from_file("documents/the_mask")
+    doc4.extract_terms(tokenizer)
+    doc4.generate_frequency_map()
+
+    tagger = Tagger()
+    tagger.add_document(doc1)
+    tagger.add_document(doc2)
+    tagger.add_document(doc3)
+    tagger.add_document(doc4)
+
+    weighted_terms = tagger.get_terms_weighted_by_tfidf(doc4)
+    tags = tagger.get_tags_using_weighted_terms(weighted_terms)
+    print(tags)
+
+
+def main():
+    test_article()
 
 if __name__ == "__main__":
     main()
