@@ -14,18 +14,30 @@ class Document:
         self.smoothing = False
 
     def add_text(self, text):
+        """
+            Append text
+        """
         self.text += " " + text
         self.text = self.text.strip()
 
     def load_from_file(self, filename):
+        """
+            This is used to append text from a file
+        """
         with open(filename, 'r') as f:
             for line in f:
                 self.add_text(line)
 
     def get_total_term_count(self):
+        """
+            Return the total number of terms in the document
+        """
         return len(self.terms)
     
     def get_term_count(self, term, smoothing=False):
+        """
+            Return the total occurence of given term in the document
+        """
         count = 0
         try:
             count = self.frequency_map[term]
@@ -35,6 +47,14 @@ class Document:
 
 
     def generate_frequency_map(self):
+        """
+            It is used to generate a frequency map for the document.
+            Eg:
+            {
+                "a" : 12,
+                "i" : 1
+            }
+        """
         for term in self.terms:
             try:
                 count = self.frequency_map[term]
@@ -43,6 +63,11 @@ class Document:
             self.frequency_map[term] = count + 1
 
     def extract_terms(self, tokenizer):
+        """
+            It is used to extract individual terms from the text.
+
+            It uses the tokenizer passed as the parameter
+        """
         self.terms = tokenizer.tokenize(self.text)
 
     def get_frequent_terms(self, size=5):
