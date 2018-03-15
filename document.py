@@ -3,7 +3,7 @@
 import operator
 from pprint import pprint
 
-from tokenizer import Tokenizer
+from textprocessor import TokenProcessor
 
 class Document:
     def __init__(self, id):
@@ -17,7 +17,7 @@ class Document:
         """
             Append text
         """
-        self.text += " " + text
+        self.text += "\n" + text
         self.text = self.text.strip()
 
     def load_from_file(self, filename):
@@ -33,7 +33,7 @@ class Document:
             Return the total number of terms in the document
         """
         return len(self.terms)
-    
+
     def get_term_count(self, term, smoothing=False):
         """
             Return the total occurence of given term in the document
@@ -69,10 +69,12 @@ class Document:
             It uses the tokenizer passed as the parameter
         """
         self.terms = tokenizer.tokenize(self.text)
+        self.terms = tokenizer.remove_stopwords(self.terms)
+        self.terms = tokenizer.remove_shortwords(self.terms)
 
     def get_frequent_terms(self, size=5):
         """
-            This method returns the map with most frequent terms in the document 
+            This method returns the map with most frequent terms in the document
             sorted in descending order by frequency.
         """
         # gives a list of tuple with (key,value)
@@ -93,12 +95,11 @@ class Document:
         return str(pprint(vars(self)))
 
 def main():
-    tokenizer = Tokenizer()
+    token_processor = TokenProcessor()
 
     doc = Document(1)
-    #doc.add_text("hello i am paradox")
     doc.load_from_file("documents/test.txt")
-    doc.extract_terms(tokenizer)
+    doc.extract_terms(token_processor)
     doc.generate_frequency_map()
     print(doc.get_frequent_terms())
 

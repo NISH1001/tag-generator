@@ -3,7 +3,7 @@
 import math
 
 from document import Document
-from tokenizer import Tokenizer
+from textprocessor import TokenProcessor
 
 class TFIDF:
     def __init__(self):
@@ -55,17 +55,19 @@ class TFIDF:
         return tfidf_list
 
 def main():
-    tokenizer = Tokenizer()
+    tokenizer = TokenProcessor()
 
     doc = Document(1)
     doc.load_from_file("documents/test.txt")
     doc.extract_terms(tokenizer)
     doc.generate_frequency_map()
+    print(doc)
 
     doc1 = Document(2)
     doc1.load_from_file("documents/test2.txt")
     doc1.extract_terms(tokenizer)
     doc1.generate_frequency_map()
+    print(doc1)
 
     tfidf = TFIDF()
     tf = tfidf.calculate_term_frequency(doc, "i")

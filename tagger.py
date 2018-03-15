@@ -5,7 +5,7 @@ from pprint import pprint
 
 from document import Document
 from tfidf import TFIDF
-from tokenizer import Tokenizer
+from textprocessor import TokenProcessor
 
 class Tagger:
     def __init__(self):
@@ -44,16 +44,16 @@ class Tagger:
         return str(pprint(vars(self)))
 
 def test():
-    tokenizer = Tokenizer()
+    textprocessor = textprocessor()
 
     doc1 = Document(1)
     doc1.load_from_file("documents/test.txt")
-    doc1.extract_terms(tokenizer)
+    doc1.extract_terms(textprocessor)
     doc1.generate_frequency_map()
 
     doc2 = Document(2)
     doc2.load_from_file("documents/test2.txt")
-    doc2.extract_terms(tokenizer)
+    doc2.extract_terms(textprocessor)
     doc2.generate_frequency_map()
 
     tagger = Tagger()
@@ -65,35 +65,41 @@ def test():
     print(tags)
 
 def test_article():
-    tokenizer = Tokenizer()
+    textprocessor = TokenProcessor()
 
     doc1 = Document(1)
     doc1.load_from_file("documents/in_the_core")
-    doc1.extract_terms(tokenizer)
+    doc1.extract_terms(textprocessor)
     doc1.generate_frequency_map()
 
     doc2 = Document(2)
     doc2.load_from_file("documents/i_saw_a_dream")
-    doc2.extract_terms(tokenizer)
+    doc2.extract_terms(textprocessor)
     doc2.generate_frequency_map()
 
     doc3 = Document(3)
     doc3.load_from_file("documents/smile")
-    doc3.extract_terms(tokenizer)
+    doc3.extract_terms(textprocessor)
     doc3.generate_frequency_map()
 
     doc4 = Document(4)
     doc4.load_from_file("documents/the_mask")
-    doc4.extract_terms(tokenizer)
+    doc4.extract_terms(textprocessor)
     doc4.generate_frequency_map()
+
+    doc5 = Document(5)
+    doc5.load_from_file("documents/sound-of-life")
+    doc5.extract_terms(textprocessor)
+    doc5.generate_frequency_map()
 
     tagger = Tagger()
     tagger.add_document(doc1)
     tagger.add_document(doc2)
     tagger.add_document(doc3)
     tagger.add_document(doc4)
+    tagger.add_document(doc5)
 
-    weighted_terms = tagger.get_terms_weighted_by_tfidf(doc4)
+    weighted_terms = tagger.get_terms_weighted_by_tfidf(doc5)
     tags = tagger.get_tags_using_weighted_terms(weighted_terms)
     print(tags)
 
