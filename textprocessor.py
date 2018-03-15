@@ -5,7 +5,7 @@ import re
 class TokenProcessor:
     def __init__(self):
         # list of delimiter
-        self.stopwords_fname = "stopwords.txt"
+        self.stopwords_fname = "data/stopwords.txt"
         self.splitter = [',', "’", '.', '/', '?', ' ', '(', ')', '"', '*', ':', '-']
         self.load_stopwords(self.stopwords_fname)
 

@@ -68,27 +68,27 @@ def test_article():
     textprocessor = TokenProcessor()
 
     doc1 = Document(1)
-    doc1.load_from_file("documents/in_the_core")
+    doc1.load_from_file("data/documents/in-the-core")
     doc1.extract_terms(textprocessor)
     doc1.generate_frequency_map()
 
     doc2 = Document(2)
-    doc2.load_from_file("documents/i_saw_a_dream")
+    doc2.load_from_file("data/documents/the-mask")
     doc2.extract_terms(textprocessor)
     doc2.generate_frequency_map()
 
     doc3 = Document(3)
-    doc3.load_from_file("documents/smile")
+    doc3.load_from_file("data/documents/sound-of-life")
     doc3.extract_terms(textprocessor)
     doc3.generate_frequency_map()
 
     doc4 = Document(4)
-    doc4.load_from_file("documents/the_mask")
+    doc4.load_from_file("data/documents/melodramatic-life")
     doc4.extract_terms(textprocessor)
     doc4.generate_frequency_map()
 
-    doc5 = Document(5)
-    doc5.load_from_file("documents/sound-of-life")
+    doc5 = Document(4)
+    doc5.load_from_file("data/documents/walking")
     doc5.extract_terms(textprocessor)
     doc5.generate_frequency_map()
 
@@ -97,7 +97,6 @@ def test_article():
     tagger.add_document(doc2)
     tagger.add_document(doc3)
     tagger.add_document(doc4)
-    tagger.add_document(doc5)
 
     weighted_terms = tagger.get_terms_weighted_by_tfidf(doc5)
     tags = tagger.get_tags_using_weighted_terms(weighted_terms)
