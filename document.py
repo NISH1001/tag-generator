@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 
-import operator
-from pprint import pprint
 
+import operator
+
+from pprint import pprint
 from textprocessor import TokenProcessor
+
 
 class Document:
     def __init__(self, id):
@@ -87,22 +89,21 @@ class Document:
             to_ret[pair[0]] = pair[1]
         return to_ret
 
-
     def display(self):
         self.__str__()
 
     def __str__(self):
         return str(pprint(vars(self)))
 
+
 def main():
     token_processor = TokenProcessor()
 
     doc = Document(1)
-    doc.load_from_file("documents/test.txt")
+    doc.load_from_file("data/test")
     doc.extract_terms(token_processor)
     doc.generate_frequency_map()
     print(doc.get_frequent_terms())
 
 if __name__ == "__main__":
     main()
-

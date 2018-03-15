@@ -58,13 +58,13 @@ def main():
     tokenizer = TokenProcessor()
 
     doc = Document(1)
-    doc.load_from_file("documents/test.txt")
+    doc.load_from_file("data/test")
     doc.extract_terms(tokenizer)
     doc.generate_frequency_map()
     print(doc)
 
     doc1 = Document(2)
-    doc1.load_from_file("documents/test2.txt")
+    doc1.load_from_file("data/test2.txt")
     doc1.extract_terms(tokenizer)
     doc1.generate_frequency_map()
     print(doc1)

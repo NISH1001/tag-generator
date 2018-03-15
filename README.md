@@ -28,6 +28,25 @@ Here, `natural_logarithm` is the logarithmic function with base **e**.
 
 -----------------
 
+## Usage
+
+#### First clone this repo
+```bash
+git clone https://github.com/NISH1001/tag-generator
+```
+
+#### Put documents (text file) inside *data/documents/* path
+The tagger uses the documents available inside **data/documents/**  
+So, make sure there is alteast one document inside this path.  
+
+#### Test the tagger
+Run the **tagger.py** script. [I am assuming you are using python3]
+```bash
+python3 tagger.py
+```
+
+If you want to test a custom text file, put that inside the data folder as **data/test**. 
+
 ## References
 https://en.wikipedia.org/wiki/Tf%E2%80%93idf
 
