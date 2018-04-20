@@ -1,0 +1,23 @@
+On Codes and Cleanlinesssource : google :PLet’s accept the fact that most of us have been frustrated by the amount of wilderness found in
+the code we write, or while going through someone else’s.All the programmers go through the similar phases :Wow! Programming is a magic once
+they see their first program being run successfully.It is interesting. This language is awesome. I think I am in love. It all makes sense,
+but a bit dumber and more high levelOkay then. I will be reading about these data structures and various algorithms and other topics which I
+have no idea how will be used in the near future.Implementing this algorithm from ground up will be awesome but then I’ll be forgetting
+these all in near future.WTF! I can’t do this. The mathematics is killing me.Okay. I’ll not try re-inventing the wheels. I’ll just use these
+libraries and frameworks for making it work** Few millennia passes by **What the hell is this code? Did I write this really? I was so
+noob.** After few millennia again **I know nothing but I can really talk about anything. :P Here’s what I do to write clean codes (at least
+try to write the codes cleaner)I. Proper coding convention for the programming languageThis helps other developers to collaborate easily.II.
+Proper variable and method naming conventionNaming the variables properly surely avoids stressful thinking if you are reading your codes
+some time later. It makes the codes more verbose.III. Prevent code duplicationIf there are same parts of codes that are written repeatedly,
+I try to separate them and put them in a separate place to prevent duplicatoin.IV. ModularityMy codes followObject Oriented
+Programmingparadigms most of the time so that the components are as modular as possible. In fact, one doesn’t necessarily have to follow OOP
+while doing simple tasks.Modularity in a sense make it more functional like a component. It doesn’t have to be the object itself but can be
+functions.However, if the tasks to be done isn’t complex, OOP adds more complexity to the codes. So, keep it simple.V. Write proper
+documentationA proper documentation guides any developers through the vastness of the codes.In fact, in the past I used to scratch my head
+over the old codes due to lack of documentation and had to literally spend hours to just make sense on what the codes do.VI. Proper
+structuring of packagesThis is also crucial for me. In a bigger project, structure matters more. Because the structuring is actually based
+on the overall architecture of the project itself.A project that’s structured properly tend to represent a good architecture.VII. Keep It
+Simple Stupid (KISS)As I have said in (IV), in the name of OOP people tend to neglect the fundamentals of coding that is — just make the
+things work simply.So, in a simple project that tends to do just one thing (such as automation, etc). I keep it simple and try to avoid OOP
+itself.ButNo code is better than buggy ones. Cheers. Minimalism should be the essence of coding.PS: I’d like to add a quote:Always code as
+if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.
