@@ -45,6 +45,11 @@ Run the **tagger.py** script. [I am assuming you are using python3]
 python3 tagger.py
 ```
 
+This will generate default 5 tags. Additional number can be supplied for getting more tags.  
+```bash
+python3 tagger.py 7
+```
+
 If you want to test a custom text file, put that inside the data folder as **data/test**. 
 
 ## References

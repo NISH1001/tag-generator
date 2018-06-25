@@ -8,6 +8,8 @@ from pprint import pprint
 from textprocessor import TokenProcessor
 from tfidf import TFIDF
 
+import sys
+
 class Tagger:
     def __init__(self):
         self.documents = {}
@@ -44,6 +46,8 @@ class Tagger:
         return str(pprint(vars(self)))
 
 def test_article():
+    args = sys.argv[1:]
+    n = 5 if not args else int(args[0])
     token_processor = TokenProcessor()
     testfile = "data/test"
 
@@ -60,7 +64,7 @@ def test_article():
         tagger.add_document(document)
 
     weighted_terms = tagger.get_terms_weighted_by_tfidf(doc)
-    tags = tagger.get_tags_using_weighted_terms(weighted_terms)
+    tags = tagger.get_tags_using_weighted_terms(weighted_terms, size=n)
     print("The likeky tags for the document are:\n{}".format(tags))
 
 
