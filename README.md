@@ -28,6 +28,12 @@ Here, `natural_logarithm` is the logarithmic function with base **e**.
 
 -----------------
 
+## Dependency
+The only dependency I have used here *(Used from June 25, 2018 and onwards)* is `nltk` library for lemmatization purpose.  
+```bash
+pip install nltk
+```
+
 ## Usage
 
 #### First clone this repo

@@ -73,6 +73,7 @@ class Document:
         self.terms = tokenizer.tokenize(self.text)
         self.terms = tokenizer.remove_stopwords(self.terms)
         self.terms = tokenizer.remove_shortwords(self.terms)
+        self.terms = tokenizer.lemmatize(self.terms)
 
     def get_frequent_terms(self, size=5):
         """

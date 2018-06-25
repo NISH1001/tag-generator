@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import re
+import nltk
 
 class TokenProcessor:
     def __init__(self):
@@ -53,6 +54,17 @@ class TokenProcessor:
     def reduce_tokens_to_space(self, text):
         regex = r"[{}]+".format(''.join(self.splitter))
         return re.sub(regex, " ", text)
+
+    def lemmatize(self, tokens):
+        lemmatizer = nltk.stem.WordNetLemmatizer()
+        lemma_list = []
+        for token in tokens:
+            lemma = lemmatizer.lemmatize(token, 'v')
+            if lemma == token:
+                lemma = lemmatizer.lemmatize(token)
+            lemma_list.append(lemma)
+        # return [ lemmatizer.lemmatize(token, 'v') for token in tokens ]
+        return lemma_list
 
     def display(self):
         print("splitter : {}".format(self.splitter))
