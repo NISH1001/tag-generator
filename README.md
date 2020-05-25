@@ -9,7 +9,7 @@ Implementation of term frequency - inverse document frequency
 ----------
 
 ## What is tf-idf ?
-Tf-idf stands for  **term frequency - inverse document frequency** which is used in text mining and information retrieval system to evauluate how important a word is in a document.  
+Tf-idf stands for  **term frequency - inverse document frequency** which is used in text mining and information retrieval system to evaluate how important a word is in a document.  
 
 The importance is directly proportional to the number of times a word appears in the document but is also weighted down by the frequency of the word in the whole corpus.
 
@@ -43,7 +43,7 @@ git clone https://github.com/NISH1001/tag-generator
 
 #### Put documents (text file) inside *data/documents/* path
 The tagger uses the documents available inside **data/documents/**  
-So, make sure there is alteast one document inside this path.  
+So, make sure there is atleast one document inside this path.  
 
 #### Test the tagger
 Run the **tagger.py** script. [I am assuming you are using python3]
